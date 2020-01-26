@@ -1,0 +1,189 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+		<title>Document</title>
+
+		<!--<link rel="stylesheet" href="css/style.css">-->
+
+		<style>
+			#gallery {
+				width: 860px;
+
+				margin: 0 auto;
+
+				text-align: center;
+			}
+
+			#gallery .photos img {
+				width: 100%;
+
+				display: none;
+			}
+
+			#gallery .photos img:first-child {
+				display: block;
+			}
+
+			.next {
+				width: 220px;
+
+				height: 90px;
+
+				background-size: cover;
+
+				color: #fff;
+
+				font-size: 30px;
+			}
+
+			.prev {
+				width: 220px;
+
+				height: 90px;
+
+				background-size: cover;
+
+				color: #fff;
+
+				font-size: 30px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="gallery">
+			<div class="photos">
+				<img
+					src="https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+					alt=""
+				/>
+
+				<img
+					src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+					alt=""
+				/>
+
+				<img
+					src="https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg"
+					alt=""
+				/>
+
+				<img
+					src="https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+					alt=""
+				/>
+
+				<img
+					src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+					alt=""
+				/>
+
+				<img
+					src="https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg"
+					alt=""
+				/>
+
+				<img
+					src="https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+					alt=""
+				/>
+
+				<img
+					src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+					alt=""
+				/>
+
+				<img
+					src="https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg"
+					alt=""
+				/>
+			</div>
+
+			<div class="buttons">
+				<input type="button" value="indietro" class="prev" />
+
+				<input type="button" value="avanti" class="next" />
+			</div>
+		</div>
+	</body>
+
+	<script>
+		let btn_prev = document.querySelector('#gallery .buttons .prev');
+
+		let btn_next = document.querySelector('#gallery .buttons .next');
+
+		let images = document.querySelectorAll('#gallery .photos img');
+
+		let i = 0;
+		let nextIndex = i;
+
+		btn_next.style.backgroundImage = 'url(' + images[nextIndex].src + ')';
+		if (images[i] === undefined) {
+			debugger;
+		}
+
+		btn_prev.style.backgroundImage = 'url(' + images[nextIndex].src + ')';
+		if (images[i] === undefined) {
+			debugger;
+		}
+
+		images[i].style.display = 'block';
+
+		btn_prev.onclick = function() {
+			images[i].style.display = 'none';
+
+			i = i - 1;
+
+			if (i < 0) {
+				i = images.length - 1;
+			}
+		};
+
+		btn_next.onclick = function() {
+			let nextIndex = i;
+			images[i].style.display = 'none';
+			console.log(i);
+			if (i + 1 < images.length) {
+				i = i + 1;
+				nextIndex = i === images.length - 1 ? 0 : i + 1;
+			} else {
+				i = 0;
+				nextIndex = i + 1;
+			}
+
+			btn_next.style.backgroundImage = 'url(' + images[nextIndex].src + ')';
+			if (images[i] === undefined) {
+				debugger;
+			}
+			images[i].style.display = 'block';
+		};
+
+		btn_prev.onclick = function() {
+			let nextIndex = i;
+			images[i].style.display = 'none';
+			console.log(i);
+			if (i - 1 < images.length) {
+				i = i - 1;
+				nextIndex = i === images.length - 1 ? 0 : i - 1;
+			} else {
+				i = 0;
+				nextIndex = i - 1;
+			}
+
+			btn_prev.style.backgroundImage = 'url(' + images[nextIndex].src + ')';
+			if (images[i] === undefined) {
+				debugger;
+			}
+			images[i].style.display = 'block';
+		};
+	</script>
+</html>
